@@ -1,0 +1,57 @@
+{
+  "kind": "collectionType",
+  "collectionName": "p_r_velos",
+  "info": {
+    "singularName": "p-r-velo",
+    "pluralName": "p-r-velos",
+    "displayName": "p-r-velo",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "statut": {
+      "type": "enumeration",
+      "enum": [
+        "À traiter",
+        "Traité",
+        "Annulé",
+        "En attente"
+      ]
+    },
+    "nom": {
+      "type": "string"
+    },
+    "prenom": {
+      "type": "string"
+    },
+    "date_de_naissance": {
+      "type": "date"
+    },
+    "type_de_carte": {
+      "type": "enumeration",
+      "enum": [
+        "Técély",
+        "OùRA!"
+      ]
+    },
+    "numero_carte": {
+      "type": "string"
+    },
+    "commentaire": {
+      "type": "blocks"
+    },
+    "fichier": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}
