@@ -382,8 +382,11 @@ export interface ApiPRVeloPRVelo extends Schema.CollectionType {
     date_de_naissance: Attribute.Date;
     type_de_carte: Attribute.Enumeration<['T\u00E9c\u00E9ly', 'O\u00F9RA!']>;
     numero_carte: Attribute.String;
-    commentaire: Attribute.Blocks;
-    fichier: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    fichier: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    commentaire: Attribute.Text;
+    url: Attribute.String;
+    fichiers: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    urlJSON: Attribute.JSON;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

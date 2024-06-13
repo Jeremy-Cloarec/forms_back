@@ -40,18 +40,36 @@
     "numero_carte": {
       "type": "string"
     },
-    "commentaire": {
-      "type": "blocks"
-    },
     "fichier": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
+      ]
+    },
+    "commentaire": {
+      "type": "text"
+    },
+    "url": {
+      "type": "string"
+    },
+    "fichiers": {
       "type": "media",
-      "multiple": true
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "urlJSON": {
+      "type": "json"
     }
   }
 }
