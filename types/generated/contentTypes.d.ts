@@ -362,6 +362,39 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
+export interface ApiFormDeletionTraceFormDeletionTrace
+  extends Schema.CollectionType {
+  collectionName: 'form_deletion_traces';
+  info: {
+    singularName: 'form-deletion-trace';
+    pluralName: 'form-deletion-traces';
+    displayName: 'form-deletion-trace';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    originalCreated: Attribute.DateTime;
+    originalId: Attribute.Integer;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::form-deletion-trace.form-deletion-trace',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::form-deletion-trace.form-deletion-trace',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPRVeloPRVelo extends Schema.CollectionType {
   collectionName: 'p_r_velos';
   info: {
@@ -841,6 +874,7 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
+      'api::form-deletion-trace.form-deletion-trace': ApiFormDeletionTraceFormDeletionTrace;
       'api::p-r-velo.p-r-velo': ApiPRVeloPRVelo;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;

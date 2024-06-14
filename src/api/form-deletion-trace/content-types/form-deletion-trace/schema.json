@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "form_deletion_traces",
+  "info": {
+    "singularName": "form-deletion-trace",
+    "pluralName": "form-deletion-traces",
+    "displayName": "form-deletion-trace",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "originalCreated": {
+      "type": "datetime"
+    },
+    "originalId": {
+      "type": "integer"
+    }
+  }
+}
