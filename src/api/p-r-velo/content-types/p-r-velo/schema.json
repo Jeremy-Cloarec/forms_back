@@ -54,9 +54,6 @@
     "commentaire": {
       "type": "text"
     },
-    "url": {
-      "type": "string"
-    },
     "fichiers": {
       "type": "media",
       "multiple": true,
@@ -67,9 +64,6 @@
         "videos",
         "audios"
       ]
-    },
-    "urlJSON": {
-      "type": "json"
     }
   }
 }

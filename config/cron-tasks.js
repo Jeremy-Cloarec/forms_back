@@ -59,14 +59,6 @@ module.exports = {
 
                     console.log('Old form entries deleted and traces created.');
 
-                    // Delete the collected files from the upload plugin
-                    if (fileIdsToDelete.length > 0) {
-                        for (const fileId of fileIdsToDelete) {
-                            await strapi.plugins.upload.services.upload.remove({ id: fileId });
-                        }
-                        // console.log(`Deleted ${fileIdsToDelete.length} files from the media library.`);
-                    }
-
                 } else {
                     console.log('No old form entries to delete.'+ new Date(new Date().getTime()));
                 }
