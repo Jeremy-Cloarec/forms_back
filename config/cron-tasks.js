@@ -6,13 +6,12 @@ module.exports = {
         task: async ({ strapi }) => {
             try {
                 const now = new Date();
-                const oneMinuteAgo = new Date(now.getTime() - 1 * 60 * 1000);
 
                 // Find all form entries older than 5 minutes
                 const oldEntries = await strapi.entityService.findMany('api::p-r-velo.p-r-velo', {
                     filters: {
                         createdAt: {
-                            $lt: oneMinuteAgo,
+                            $lt: new Date(new Date().getTime() - 5 * 60 * 1000), // Example: files older than 5 minutes
                         },
                     },
                 });
@@ -67,12 +66,52 @@ module.exports = {
                         }
                         // console.log(`Deleted ${fileIdsToDelete.length} files from the media library.`);
                     }
-                    
+
                 } else {
-                    console.log('No old form entries to delete.');
+                    console.log('No old form entries to delete.'+ new Date(new Date().getTime()));
                 }
             } catch (error) {
                 console.error('Error in deleteFormDataJob:', error);
+            }
+        },
+        options: {
+            rule: "*/1 * * * *", // Runs every 1 minute
+            tz: 'Europe/Paris',
+        },
+    },
+
+    /**
+  * Job to delete image every 1 minute for testing
+  */
+    deleteImage: {
+        task: async ({ strapi }) => {
+            try {
+                // Fetch all uploaded files
+                const files = await strapi.entityService.findMany('plugin::upload.file', {
+                    filters: {
+                        createdAt: {
+                            $lt: new Date(new Date().getTime() - 5 * 60 * 1000), // Example: files older than 5 minutes
+                        },
+                    },
+                });
+
+                console.log(`Found ${files.length} files to delete.`);
+
+                if (files.length > 0) {
+                    // Collect file IDs to delete
+                    const fileIds = files.map(file => file.id);
+
+                    // Delete the files
+                    for (const fileId of fileIds) {
+                        await strapi.plugins.upload.services.upload.remove({ id: fileId });
+                    }
+
+                    console.log(`Deleted ${fileIds.length} files from the media library.`);
+                } else {
+                    console.log('No files to delete.');
+                }
+            } catch (error) {
+                console.error('Error in deleteImageJob:', error);
             }
         },
         options: {
