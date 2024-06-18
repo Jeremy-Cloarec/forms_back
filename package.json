@@ -13,12 +13,14 @@
     "@strapi/plugin-cloud": "4.24.5",
     "@strapi/plugin-i18n": "4.24.5",
     "@strapi/plugin-users-permissions": "4.24.5",
+    "@strapi/provider-email-nodemailer": "^4.25.0",
     "@strapi/strapi": "4.24.5",
     "better-sqlite3": "8.6.0",
     "codemirror": "5.65.11",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "5.3.4",
+    "sendmail": "^1.6.1",
     "styled-components": "5.3.3"
   },
   "author": {
