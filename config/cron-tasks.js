@@ -1,4 +1,70 @@
+const marked = require('marked');
+
 module.exports = {
+    /**
+  * Job to send emails
+  */
+    sendEmails: {
+        task: async ({ strapi }) => {
+            console.log('Cron job for sending emails running');
+            try {
+                let emails = await strapi.service('api::email-template.email-template').find();
+                if (!emails || !emails.results || emails.results.length === 0) {
+                    console.log('No emails found');
+                    return;
+                }
+
+                emails = emails.results.reverse();
+                console.log('Emails fetched successfully');
+
+                const subscribers = await strapi.service('api::p-r-velo.p-r-velo').find();
+                if (!subscribers || !subscribers.results || subscribers.results.length === 0) {
+                    console.log('No subscribers found');
+                    return;
+                }
+                console.log('Subscribers fetched successfully');
+
+                let emailContent = emails[0].Content;
+                if (Array.isArray(emailContent)) {
+                    // Transform the array to a string if necessary
+                    emailContent = emailContent.map(block => {
+                        if (block.type === 'paragraph') {
+                            return block.children.map(child => child.text).join('');
+                        }
+                        // Add more conditions for other types if needed
+                        return '';
+                    }).join('\n');
+                }
+
+                const content = marked.parse(emailContent)
+
+                if (!content) {
+                    console.log('No content found in the latest email template');
+                    return;
+                }
+                console.log('Email content:', content);
+
+                await Promise.all(subscribers.results.map(async (el) => {
+                    return await strapi
+                        .plugin('email')
+                        .service('email')
+                        .send({
+                            to: el.email,
+                            subject: 'Test mail',
+                            html: content,
+                        });
+                }));
+
+                console.log('Emails sent successfully');
+            } catch (error) {
+                console.error('Error in sendEmailsJob:', error);
+            }
+        },
+        options: {
+            rule: "*/1 * * * *", // Schedule as per your requirement
+            tz: 'Europe/Paris',
+        },
+    },
     /**
      * Job to delete form data every 1 minute for testing
      */
@@ -13,7 +79,7 @@ module.exports = {
                     populate: ['fichier', 'fichiers'],
                     filters: {
                         createdAt: {
-                            $lt: new Date(new Date().getTime() - oneMinute), // Example: files older than 5 minutes
+                            $lt: new Date(new Date().getTime() - oneMinute),
                         },
                     },
                 });
@@ -25,7 +91,6 @@ module.exports = {
 
                 // Store trace of deleted entries and collect file IDs
                 for (const entry of oldEntries) {
-                    console.log(entry);
 
                     // Collect the file IDs from the entry
                     if (entry.fichier && entry.fichier.id) {

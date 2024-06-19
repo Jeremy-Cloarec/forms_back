@@ -788,6 +788,37 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiEmailTemplateEmailTemplate extends Schema.CollectionType {
+  collectionName: 'email_templates';
+  info: {
+    singularName: 'email-template';
+    pluralName: 'email-templates';
+    displayName: 'email-template';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Subject: Attribute.String;
+    Content: Attribute.Blocks;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::email-template.email-template',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::email-template.email-template',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiFormDeletionTraceFormDeletionTrace
   extends Schema.CollectionType {
   collectionName: 'form_deletion_traces';
@@ -844,6 +875,7 @@ export interface ApiPRVeloPRVelo extends Schema.CollectionType {
     fichier: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     commentaire: Attribute.Text;
     fichiers: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    email: Attribute.Email;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -880,6 +912,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::email-template.email-template': ApiEmailTemplateEmailTemplate;
       'api::form-deletion-trace.form-deletion-trace': ApiFormDeletionTraceFormDeletionTrace;
       'api::p-r-velo.p-r-velo': ApiPRVeloPRVelo;
     }
