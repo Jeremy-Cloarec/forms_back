@@ -126,9 +126,10 @@ module.exports = {
 
                     // Delete files in the media library by their IDs
                     for (const fileId of fileIdsToDelete) {
-                        const deletedFile = await strapi.plugins.upload.services.upload.remove({ id: fileId });
-                        // Delete corresponding file in the upload folder
-                        strapi.plugins.upload.services.upload.remove(deletedFile);
+                        const file = await strapi.plugins.upload.services.upload.findOne({ id: fileId });
+                        if (file && file.provider) {
+                            await strapi.plugins.upload.services.upload.remove({ id: fileId });
+                        }
                     }
 
                     console.log('Old form entries and associated files deleted, and traces created.');
