@@ -819,6 +819,29 @@ export interface ApiEmailTemplateEmailTemplate extends Schema.CollectionType {
   };
 }
 
+export interface ApiFormForm extends Schema.CollectionType {
+  collectionName: 'forms';
+  info: {
+    singularName: 'form';
+    pluralName: 'forms';
+    displayName: 'form';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    fields: Attribute.JSON;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::form.form', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::form.form', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiFormDeletionTraceFormDeletionTrace
   extends Schema.CollectionType {
   collectionName: 'form_deletion_traces';
@@ -913,6 +936,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::email-template.email-template': ApiEmailTemplateEmailTemplate;
+      'api::form.form': ApiFormForm;
       'api::form-deletion-trace.form-deletion-trace': ApiFormDeletionTraceFormDeletionTrace;
       'api::p-r-velo.p-r-velo': ApiPRVeloPRVelo;
     }
