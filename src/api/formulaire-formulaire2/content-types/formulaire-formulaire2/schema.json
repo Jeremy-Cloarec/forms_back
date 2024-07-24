@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "formulaire_formulaire2s",
+  "info": {
+    "singularName": "formulaire-formulaire2",
+    "pluralName": "formulaire-formulaire2s",
+    "displayName": "formulaire_formulaire2",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "input": {
+      "type": "dynamiczone",
+      "components": [
+        "input-text.input-text",
+        "input-text.surname"
+      ]
+    }
+  }
+}

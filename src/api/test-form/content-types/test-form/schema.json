@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "test_forms",
+  "info": {
+    "singularName": "test-form",
+    "pluralName": "test-forms",
+    "displayName": "test_form",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "id_test_form": {
+      "type": "uid"
+    },
+    "form": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::form.form",
+      "mappedBy": "test_form"
+    }
+  }
+}

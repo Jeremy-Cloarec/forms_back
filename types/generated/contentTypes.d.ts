@@ -825,6 +825,7 @@ export interface ApiFormForm extends Schema.CollectionType {
     singularName: 'form';
     pluralName: 'forms';
     displayName: 'form';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -832,6 +833,11 @@ export interface ApiFormForm extends Schema.CollectionType {
   attributes: {
     name: Attribute.String;
     fields: Attribute.JSON;
+    test_form: Attribute.Relation<
+      'api::form.form',
+      'oneToOne',
+      'api::test-form.test-form'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -868,6 +874,79 @@ export interface ApiFormDeletionTraceFormDeletionTrace
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::form-deletion-trace.form-deletion-trace',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiFormulaireFormulaire1FormulaireFormulaire1
+  extends Schema.CollectionType {
+  collectionName: 'formulaire_formulaire1s';
+  info: {
+    singularName: 'formulaire-formulaire1';
+    pluralName: 'formulaire-formulaire1s';
+    displayName: 'formulaire_formulaire1';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    input: Attribute.DynamicZone<
+      [
+        'input-text.input-text',
+        'input-text.email',
+        'input-text.surname',
+        'input-textarea.textarea'
+      ]
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::formulaire-formulaire1.formulaire-formulaire1',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::formulaire-formulaire1.formulaire-formulaire1',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiFormulaireFormulaire2FormulaireFormulaire2
+  extends Schema.CollectionType {
+  collectionName: 'formulaire_formulaire2s';
+  info: {
+    singularName: 'formulaire-formulaire2';
+    pluralName: 'formulaire-formulaire2s';
+    displayName: 'formulaire_formulaire2';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    input: Attribute.DynamicZone<
+      ['input-text.input-text', 'input-text.surname']
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::formulaire-formulaire2.formulaire-formulaire2',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::formulaire-formulaire2.formulaire-formulaire2',
       'oneToOne',
       'admin::user'
     > &
@@ -917,6 +996,42 @@ export interface ApiPRVeloPRVelo extends Schema.CollectionType {
   };
 }
 
+export interface ApiTestFormTestForm extends Schema.CollectionType {
+  collectionName: 'test_forms';
+  info: {
+    singularName: 'test-form';
+    pluralName: 'test-forms';
+    displayName: 'test_form';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    id_test_form: Attribute.UID;
+    form: Attribute.Relation<
+      'api::test-form.test-form',
+      'oneToOne',
+      'api::form.form'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::test-form.test-form',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::test-form.test-form',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -938,7 +1053,10 @@ declare module '@strapi/types' {
       'api::email-template.email-template': ApiEmailTemplateEmailTemplate;
       'api::form.form': ApiFormForm;
       'api::form-deletion-trace.form-deletion-trace': ApiFormDeletionTraceFormDeletionTrace;
+      'api::formulaire-formulaire1.formulaire-formulaire1': ApiFormulaireFormulaire1FormulaireFormulaire1;
+      'api::formulaire-formulaire2.formulaire-formulaire2': ApiFormulaireFormulaire2FormulaireFormulaire2;
       'api::p-r-velo.p-r-velo': ApiPRVeloPRVelo;
+      'api::test-form.test-form': ApiTestFormTestForm;
     }
   }
 }

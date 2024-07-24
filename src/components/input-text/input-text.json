@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_input_input_texts",
+  "info": {
+    "displayName": "name",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

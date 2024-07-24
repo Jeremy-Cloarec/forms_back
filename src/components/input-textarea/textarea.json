@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_input_textarea_textareas",
+  "info": {
+    "displayName": "Textarea"
+  },
+  "options": {},
+  "attributes": {
+    "Textarea": {
+      "type": "text"
+    }
+  }
+}

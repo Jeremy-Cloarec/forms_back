@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "formulaire_formulaire1s",
+  "info": {
+    "singularName": "formulaire-formulaire1",
+    "pluralName": "formulaire-formulaire1s",
+    "displayName": "formulaire_formulaire1",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "input": {
+      "type": "dynamiczone",
+      "components": [
+        "input-text.input-text",
+        "input-text.email",
+        "input-text.surname",
+        "input-textarea.textarea"
+      ]
+    }
+  }
+}

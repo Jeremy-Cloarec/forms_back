@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_input_number_phones",
+  "info": {
+    "displayName": "Phone"
+  },
+  "options": {},
+  "attributes": {
+    "Number": {
+      "type": "integer"
+    }
+  }
+}

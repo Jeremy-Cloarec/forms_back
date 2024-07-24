@@ -4,7 +4,8 @@
   "info": {
     "singularName": "form",
     "pluralName": "forms",
-    "displayName": "form"
+    "displayName": "form",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -16,6 +17,12 @@
     },
     "fields": {
       "type": "json"
+    },
+    "test_form": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::test-form.test-form",
+      "inversedBy": "form"
     }
   }
 }
