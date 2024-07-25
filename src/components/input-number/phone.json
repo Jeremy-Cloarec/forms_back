@@ -1,11 +1,12 @@
 {
   "collectionName": "components_input_number_phones",
   "info": {
-    "displayName": "Phone"
+    "displayName": "phone",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "Number": {
+    "number": {
       "type": "integer"
     }
   }

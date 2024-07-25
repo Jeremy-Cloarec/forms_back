@@ -4,8 +4,7 @@
   "info": {
     "singularName": "formulaire-formulaire1",
     "pluralName": "formulaire-formulaire1s",
-    "displayName": "formulaire_formulaire1",
-    "description": ""
+    "displayName": "formulaire_formulaire1"
   },
   "options": {
     "draftAndPublish": true
@@ -15,10 +14,11 @@
     "input": {
       "type": "dynamiczone",
       "components": [
-        "input-text.input-text",
-        "input-text.email",
+        "input-text.name",
         "input-text.surname",
-        "input-textarea.textarea"
+        "input-textarea.textarea",
+        "input-number.phone",
+        "input-email.email"
       ]
     }
   }

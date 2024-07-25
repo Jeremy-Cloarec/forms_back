@@ -888,7 +888,6 @@ export interface ApiFormulaireFormulaire1FormulaireFormulaire1
     singularName: 'formulaire-formulaire1';
     pluralName: 'formulaire-formulaire1s';
     displayName: 'formulaire_formulaire1';
-    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -896,10 +895,11 @@ export interface ApiFormulaireFormulaire1FormulaireFormulaire1
   attributes: {
     input: Attribute.DynamicZone<
       [
-        'input-text.input-text',
-        'input-text.email',
+        'input-text.name',
         'input-text.surname',
-        'input-textarea.textarea'
+        'input-textarea.textarea',
+        'input-number.phone',
+        'input-email.email'
       ]
     >;
     createdAt: Attribute.DateTime;
@@ -933,9 +933,7 @@ export interface ApiFormulaireFormulaire2FormulaireFormulaire2
     draftAndPublish: true;
   };
   attributes: {
-    input: Attribute.DynamicZone<
-      ['input-text.input-text', 'input-text.surname']
-    >;
+    input: Attribute.DynamicZone<['input-text.name', 'input-text.surname']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

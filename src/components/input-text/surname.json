@@ -1,12 +1,12 @@
 {
   "collectionName": "components_input_surnames",
   "info": {
-    "displayName": "Surname",
+    "displayName": "surname",
     "description": ""
   },
   "options": {},
   "attributes": {
-    "Surname": {
+    "surname": {
       "type": "string"
     }
   }

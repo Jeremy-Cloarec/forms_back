@@ -1,27 +1,28 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface InputEmailEmail extends Schema.Component {
+  collectionName: 'components_input_email_emails';
+  info: {
+    displayName: 'email';
+  };
+  attributes: {
+    email: Attribute.Email;
+  };
+}
+
 export interface InputNumberPhone extends Schema.Component {
   collectionName: 'components_input_number_phones';
   info: {
-    displayName: 'Phone';
+    displayName: 'phone';
+    description: '';
   };
   attributes: {
-    Number: Attribute.Integer;
+    number: Attribute.Integer;
   };
 }
 
-export interface InputTextEmail extends Schema.Component {
-  collectionName: 'components_input_text_emails';
-  info: {
-    displayName: 'Email';
-  };
-  attributes: {
-    Email: Attribute.String;
-  };
-}
-
-export interface InputTextInputText extends Schema.Component {
-  collectionName: 'components_input_input_texts';
+export interface InputTextName extends Schema.Component {
+  collectionName: 'components_input_name';
   info: {
     displayName: 'name';
     description: '';
@@ -34,30 +35,31 @@ export interface InputTextInputText extends Schema.Component {
 export interface InputTextSurname extends Schema.Component {
   collectionName: 'components_input_surnames';
   info: {
-    displayName: 'Surname';
+    displayName: 'surname';
     description: '';
   };
   attributes: {
-    Surname: Attribute.String;
+    surname: Attribute.String;
   };
 }
 
 export interface InputTextareaTextarea extends Schema.Component {
-  collectionName: 'components_input_textarea_textareas';
+  collectionName: 'components_input_textarea_message';
   info: {
-    displayName: 'Textarea';
+    displayName: 'message';
+    description: '';
   };
   attributes: {
-    Textarea: Attribute.Text;
+    message: Attribute.Text;
   };
 }
 
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'input-email.email': InputEmailEmail;
       'input-number.phone': InputNumberPhone;
-      'input-text.email': InputTextEmail;
-      'input-text.input-text': InputTextInputText;
+      'input-text.name': InputTextName;
       'input-text.surname': InputTextSurname;
       'input-textarea.textarea': InputTextareaTextarea;
     }

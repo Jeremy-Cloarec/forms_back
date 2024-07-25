@@ -1,11 +1,12 @@
 {
-  "collectionName": "components_input_textarea_textareas",
+  "collectionName": "components_input_textarea_message",
   "info": {
-    "displayName": "Textarea"
+    "displayName": "message",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "Textarea": {
+    "message": {
       "type": "text"
     }
   }
