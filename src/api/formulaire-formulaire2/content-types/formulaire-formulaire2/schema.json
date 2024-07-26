@@ -4,8 +4,7 @@
   "info": {
     "singularName": "formulaire-formulaire2",
     "pluralName": "formulaire-formulaire2s",
-    "displayName": "formulaire_formulaire2",
-    "description": ""
+    "displayName": "formulaire_formulaire2"
   },
   "options": {
     "draftAndPublish": true

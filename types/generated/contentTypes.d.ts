@@ -897,7 +897,7 @@ export interface ApiFormulaireFormulaire1FormulaireFormulaire1
       [
         'input-text.name',
         'input-text.surname',
-        'input-textarea.textarea',
+        'input-textarea.message',
         'input-number.phone',
         'input-email.email'
       ]
@@ -927,7 +927,6 @@ export interface ApiFormulaireFormulaire2FormulaireFormulaire2
     singularName: 'formulaire-formulaire2';
     pluralName: 'formulaire-formulaire2s';
     displayName: 'formulaire_formulaire2';
-    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -945,6 +944,39 @@ export interface ApiFormulaireFormulaire2FormulaireFormulaire2
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::formulaire-formulaire2.formulaire-formulaire2',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiFormulaireFormulaire3FormulaireFormulaire3
+  extends Schema.CollectionType {
+  collectionName: 'formulaire_formulaire3s';
+  info: {
+    singularName: 'formulaire-formulaire3';
+    pluralName: 'formulaire-formulaire3s';
+    displayName: 'formulaire_formulaire3';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    input: Attribute.DynamicZone<
+      ['input-text.name', 'input-text.surname', 'input-number.phone']
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::formulaire-formulaire3.formulaire-formulaire3',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::formulaire-formulaire3.formulaire-formulaire3',
       'oneToOne',
       'admin::user'
     > &
@@ -1053,6 +1085,7 @@ declare module '@strapi/types' {
       'api::form-deletion-trace.form-deletion-trace': ApiFormDeletionTraceFormDeletionTrace;
       'api::formulaire-formulaire1.formulaire-formulaire1': ApiFormulaireFormulaire1FormulaireFormulaire1;
       'api::formulaire-formulaire2.formulaire-formulaire2': ApiFormulaireFormulaire2FormulaireFormulaire2;
+      'api::formulaire-formulaire3.formulaire-formulaire3': ApiFormulaireFormulaire3FormulaireFormulaire3;
       'api::p-r-velo.p-r-velo': ApiPRVeloPRVelo;
       'api::test-form.test-form': ApiTestFormTestForm;
     }

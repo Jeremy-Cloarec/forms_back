@@ -43,7 +43,7 @@ export interface InputTextSurname extends Schema.Component {
   };
 }
 
-export interface InputTextareaTextarea extends Schema.Component {
+export interface InputTextareaMessage extends Schema.Component {
   collectionName: 'components_input_textarea_message';
   info: {
     displayName: 'message';
@@ -61,7 +61,7 @@ declare module '@strapi/types' {
       'input-number.phone': InputNumberPhone;
       'input-text.name': InputTextName;
       'input-text.surname': InputTextSurname;
-      'input-textarea.textarea': InputTextareaTextarea;
+      'input-textarea.message': InputTextareaMessage;
     }
   }
 }

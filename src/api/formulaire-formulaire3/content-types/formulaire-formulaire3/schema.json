@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "formulaire_formulaire1s",
+  "collectionName": "formulaire_formulaire3s",
   "info": {
-    "singularName": "formulaire-formulaire1",
-    "pluralName": "formulaire-formulaire1s",
-    "displayName": "formulaire_formulaire1"
+    "singularName": "formulaire-formulaire3",
+    "pluralName": "formulaire-formulaire3s",
+    "displayName": "formulaire_formulaire3"
   },
   "options": {
     "draftAndPublish": true
@@ -16,9 +16,7 @@
       "components": [
         "input-text.name",
         "input-text.surname",
-        "input-textarea.message",
-        "input-number.phone",
-        "input-email.email"
+        "input-number.phone"
       ]
     }
   }
